@@ -1,14 +1,24 @@
 const exp=require('express');
 const app=exp();
+const GlobalErrorHandler=require('./middleware/GlobalErrorHandler')
+
+
+
+
+
 
 app.use(exp.json())
+app.use("/tasks",require('./routes/controllerRoutes'));
+app.use(GlobalErrorHandler);
 
-const mongoose=require('mongoose');
-const connectDB=require('./config/dbConfig');
+
+
+
 
 
 app.get("/",(req,res)=>{
     res.send('Hello, World!');
 })
-connectDB();
+
+
 module.exports=app;
