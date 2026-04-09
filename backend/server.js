@@ -1,11 +1,7 @@
-const exp=require('express');
-const app=exp();
+const server=require('./app');
 
 const port=3000;
 
-app.listen(port,()=>{
+server.listen(port,()=>{
     console.log(`server listens at ${port}`);
-})
-app.get("/",(req,res)=>{
-    res.send('Hello, World!');
 })
