@@ -1,7 +1,9 @@
-const server=require('./app');
+
+require('dotenv').config();
+const app=require('./app');
 
 const port=3000;
 
-server.listen(port,()=>{
+app.listen(port,()=>{
     console.log(`server listens at ${port}`);
 })
