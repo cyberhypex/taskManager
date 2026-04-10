@@ -1,4 +1,4 @@
-const taskModel=require('../models/taskModel');
+const {taskModel}=require('../models/taskModel');
 const taskDTO=require('../models/DTOs/taskModelDTO');
 const CustomError=require('../utils/customErrorHandling/customError');
 
@@ -7,13 +7,17 @@ const mongoose=require('mongoose');
 //->Create a new task
 
 const createNewTask=async(req,res,next)=>{
+    console.log("TASK MODEL:", taskModel);
+    console.log(require.resolve('../models/taskModel'));
     try {
         const {title}=req.body;
+        console.log(title);
         if(!title){
             throw new CustomError("Title can't be empty",400);
         }
 
         const newTask=await taskModel.create({title});
+        console.log(newTask);
         res.status(201).json(
             taskDTO(newTask)
         )

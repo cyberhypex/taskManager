@@ -2,16 +2,16 @@ const request = require('supertest');
 const app = require('../app');
 const taskModel=require('../models/taskModel');
 
-jest.mock('../models/taskModel', () => ({
-    create: jest.fn()
-}));
+
 test("Create Task Endpoint", async () => {
-    taskModel.create.mockResolvedValue({
-        title: "test task",
-        completed: false,
-        createdAt: "now",
+    const mockTask = {
         
-    });
+        title: "test task",
+        
+        
+    };
+
+  //  taskModel.create.mockResolvedValue(mockTask);
 
     const res = await request(app)
         .post("/tasks/createTask")
